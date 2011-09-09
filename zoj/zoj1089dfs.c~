@@ -1,0 +1,32 @@
+#include <stdio.h>
+int ans[5];
+int input[12];
+int n;
+
+void dfs(int d,int now){
+	printf("begins\n");
+	if(d>5)
+		printf("%d %d %d %d %d %d\n",ans[0],ans[1],ans[2],ans[3],ans[4],ans[5]);
+	else
+		for(int i=now;i<n-(6-d);i++){
+			ans[d]=input[i];
+			printf("ans[%d] is %d\n",now,ans[n]);
+			dfs(d+1,i+1);
+		}
+}
+
+int main(){
+	int m;
+	int flag=1;
+	while(scanf("%d",&m)&&m){
+		if(flag==0)
+			printf("\n");
+		for(int i=0;i<m;i++){
+			scanf("%d",&input[i]);
+			printf("input is %d\n",input[i]);
+		}
+		dfs(0,0);
+		flag=0;
+	}
+	return 0;
+}
